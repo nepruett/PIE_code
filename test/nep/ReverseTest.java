@@ -1,6 +1,6 @@
-package nep.collection;
+package nep;
 
-import nep.Reverse;
+import nep.collection.SingleListOperations;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
