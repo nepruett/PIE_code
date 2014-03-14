@@ -1,8 +1,6 @@
 package nep.collection;
 
-import com.google.common.base.Joiner;
-import com.google.common.base.Lists;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChildList<T> {
@@ -73,9 +71,9 @@ public class ChildList<T> {
         for( int i = 0; i < spaces; i++) {
             currentSB.append(' ');
         }
-        while( elem != null )
+        while( elem != null ) {
             currentSB.append(elem.getValue());
-            spaces = buildLevels(levels, elem.getChild(), level + 1, curentSB.length());
+            spaces = buildLevels(levels, elem.getChild(), level + 1, currentSB.length());
             spaces = spaces - currentSB.length();
             for(int i = 0; i < spaces; i++) {
                 currentSB.append(' ');
@@ -90,9 +88,14 @@ public class ChildList<T> {
     
     @Override
     public String toString() {
-        List<StringBuilder> levels = Lists.newArrayList();
+        List<StringBuilder> levels = new ArrayList<>();
         buildLevels(levels, head, 0, 0);
-        return Joiner.on("\n").join(levels);
+        StringBuilder all = new StringBuilder();
+        for(StringBuilder sb : levels) {
+            all.append(sb);
+            all.append("\n");
+        }
+        return all.deleteCharAt(all.length() - 1).toString();
     }
     
     public void flatten() {

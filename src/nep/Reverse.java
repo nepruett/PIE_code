@@ -1,15 +1,15 @@
 package nep;
 
+import nep.collection.SingleListElement;
+
 public class Reverse {
     public static String string(String str) {
-        //checkNotNull(str);
         return String.valueOf(chars(str.toCharArray()));
     }
     
     public static char[] chars(char[] chars) {
-        //checkNotNull(chars);
         // reverse in place algorithm
-        for(int i = 0, j = chars.length - 1; i < chars.length / 2; I++, j-- ) {
+        for(int i = 0, j = chars.length - 1; i < chars.length / 2; i++, j-- ) {
             char c = chars[i];
             chars[i] = chars[j];
             chars[j] = c;
@@ -21,14 +21,13 @@ public class Reverse {
     // Tried <T, E extends SingleListElement<T>> but got incompatible types error...
     public static <T> SingleListElement<T> singleList(SingleListElement<T> head) {
         SingleListElement<T> temp = null;
-        SingleListElement<T> prev = null;
+        SingleListElement<T> previous = null;
         while(head != null) {
             temp = head.getNext();
             head.setNext(previous);
             previous = head;
             head = temp;
         }
-        
         return previous;
     }
 }
