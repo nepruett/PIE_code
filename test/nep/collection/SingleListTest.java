@@ -2,7 +2,8 @@ package nep.collection;
 
 import org.junit.Test;
 
-import static junit.framework.Assert.*;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 
 public class SingleListTest {
 
@@ -97,6 +98,13 @@ public class SingleListTest {
         assertEquals(head.getNext(), b);
         SingleListElement<String> c = SingleListOperations.find(head, "C");
         assertEquals(head.getNext().getNext(), c);
+    }
+
+    @Test
+    public void testPrint() {
+        assertThat(SingleListOperations.print(SingleListOperations.buildList()), is(""));
+        assertThat(SingleListOperations.print(SingleListOperations.buildList("A")), is("A"));
+        assertThat(SingleListOperations.print(SingleListOperations.buildList("A", "B", "C")), is("A->B->C"));
     }
 
 }

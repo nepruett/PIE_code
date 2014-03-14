@@ -32,4 +32,17 @@ public class SingleListOperations {
         }
         return elem;
     }
+
+    public static <T> String print(SingleListElement<T> head) {
+        SingleListElement<T> elem = head;
+        StringBuilder sb = new StringBuilder();
+        while(elem != null) {
+            sb.append(elem.getValue());
+            if(elem.getNext() != null) {
+                sb.append("->");
+            }
+            elem = elem.getNext();
+        }
+        return sb.toString();
+    }
 }
